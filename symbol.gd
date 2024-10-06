@@ -13,7 +13,7 @@ func change_sprite(ideology: Global.Ideology):
 func _ready() -> void:
 	mouse_area.connect("mouse_entered", mouse_entered)
 	mouse_area.connect("mouse_exited", mouse_exit)
-
+	Signals.year_passed.connect(on_year_passed)
 
 func mouse_entered():
 	sprite.scale = Vector2(1.2, 1.2)
@@ -32,9 +32,10 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, radius, color, false, 2, true)
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("villager"):
-		var villager :=  area as Villager
-		var material: ShaderMaterial = villager.sprite.material
-		var clr : Color = Global.get_color(ideology) # or whatever
-		material.set_shader_parameter("shirt_color", clr)
+func on_year_passed():
+	for area in get_overlapping_areas():
+		if area.is_in_group("villager"):
+			var villager := area as Villager
+			var material: ShaderMaterial = villager.sprite.material
+			var clr : Color = Global.get_color(ideology) # or whatever
+			material.set_shader_parameter("shirt_color", clr)
