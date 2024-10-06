@@ -11,6 +11,7 @@ height = 32.0
 
 [node name="Symbol" type="Area2D"]
 collision_layer = 2
+monitorable = false
 script = ExtResource("1_qeugm")
 
 [node name="EffectShape" type="CollisionShape2D" parent="."]
@@ -28,4 +29,5 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("CapsuleShape2D_30sep")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="MouseArea" to="." method="_on_mouse_area_input_event"]

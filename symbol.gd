@@ -30,3 +30,11 @@ func _on_mouse_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 func _draw() -> void:
 	var color = Global.get_color(ideology)
 	draw_circle(Vector2.ZERO, radius, color, false, 2, true)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("villager"):
+		var villager :=  area as Villager
+		var material: ShaderMaterial = villager.sprite.material
+		var clr : Color = Global.get_color(ideology) # or whatever
+		material.set_shader_parameter("shirt_color", clr)
