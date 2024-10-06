@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhckopcv47dte"]
+
+[ext_resource type="Script" path="res://symbol.gd" id="1_qeugm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_np310"]
+radius = 392.8
+
+[node name="Symbol" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_qeugm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_np310")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdk5alsrulp6w"]
+
+[ext_resource type="Texture2D" uid="uid://cm8c85ri65wv" path="res://SpriteResource.tres" id="1_o4n1a"]
+[ext_resource type="Script" path="res://mouse_drop_sprite.gd" id="2_viado"]
+
+[node name="MouseDropSprite" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_o4n1a")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+script = ExtResource("2_viado")
