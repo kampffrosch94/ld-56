@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://mouse_drop_sprite.gd" id="2_viado"]
 
 [node name="MouseDropSprite" type="Sprite2D"]
-scale = Vector2(2, 2)
 texture = ExtResource("1_o4n1a")
 region_enabled = true
 region_rect = Rect2(32, 32, 32, 32)

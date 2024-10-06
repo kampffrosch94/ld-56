@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://df5mcjkprgits"]
+[gd_scene load_steps=9 format=3 uid="uid://df5mcjkprgits"]
 
 [ext_resource type="Script" path="res://villager.gd" id="1_8mb0b"]
+[ext_resource type="Shader" path="res://Villager.gdshader" id="1_h33pn"]
 [ext_resource type="Texture2D" uid="uid://cm8c85ri65wv" path="res://SpriteResource.tres" id="2_cqjvc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mge08"]
+shader = ExtResource("1_h33pn")
+shader_parameter/red = 1.0
+shader_parameter/green = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/shirt_color = Vector3(1, 0, 0)
 
 [sub_resource type="Animation" id="Animation_hdxh4"]
 length = 0.001
@@ -40,16 +48,25 @@ _data = {
 "walk": SubResource("Animation_0y2tt")
 }
 
-[node name="Villager" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ifcge"]
+height = 36.0
+
+[node name="Villager" type="Area2D" groups=["villager"]]
+texture_filter = 1
 script = ExtResource("1_8mb0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_mge08")
 texture = ExtResource("2_cqjvc")
 region_enabled = true
-region_rect = Rect2(0, 96, 32, 32)
+region_rect = Rect2(32, 128, 32, 32)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dc53u")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_ifcge")

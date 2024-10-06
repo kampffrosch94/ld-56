@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhckopcv47dte"]
+[gd_scene load_steps=5 format=3 uid="uid://dhckopcv47dte"]
 
 [ext_resource type="Script" path="res://symbol.gd" id="1_qeugm"]
+[ext_resource type="Texture2D" uid="uid://cm8c85ri65wv" path="res://SpriteResource.tres" id="2_mrdmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_np310"]
-radius = 392.8
+radius = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30sep"]
+height = 32.0
 
 [node name="Symbol" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_qeugm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EffectShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_np310")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mrdmh")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="MouseArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("CapsuleShape2D_30sep")
+
+[connection signal="input_event" from="MouseArea" to="." method="_on_mouse_area_input_event"]

@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	var dropper: Dropper = dropper_scene.instantiate()
 	dropper.change_sprite(ideology)
-	get_parent().add_child(dropper)
+	get_parent().get_parent().get_parent().add_child(dropper)
 
 func _on_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)

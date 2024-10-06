@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 movie_writer/movie_file="/home/kampffrosch/data/Videos/Record/movie.avi"
 
+[global_group]
+
+villager=""
+
 [input]
 
 left_click={
