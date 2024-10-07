@@ -9,11 +9,11 @@ func change_sprite(ideology: Global.Ideology):
 	self.region_rect.position.x = 32 * (ideology + 1)
 	self.ideology = ideology
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	if Input.is_action_just_pressed("left_click"):
 		var symbol: Symbol = symbol_scene.instantiate()
-		add_sibling(symbol)
+		get_parent().add_sibling(symbol)
 		symbol.global_position = global_position
 		symbol.change_sprite(ideology)
 		queue_free()

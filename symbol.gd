@@ -36,6 +36,4 @@ func on_year_passed():
 	for area in get_overlapping_bodies():
 		if area.is_in_group("villager"):
 			var villager := area as Villager
-			var material: ShaderMaterial = villager.sprite.material
-			var clr : Color = Global.get_color(ideology) # or whatever
-			material.set_shader_parameter("shirt_color", clr)
+			villager.score[ideology] += 7

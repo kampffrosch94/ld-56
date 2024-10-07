@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://df5mcjkprgits"]
+[gd_scene load_steps=12 format=3 uid="uid://df5mcjkprgits"]
 
 [ext_resource type="Script" path="res://villager.gd" id="1_8mb0b"]
 [ext_resource type="Shader" path="res://Villager.gdshader" id="1_h33pn"]
@@ -104,6 +104,10 @@ height = 36.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoxq8"]
 radius = 300.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e42kk"]
+radius = 29.0
+height = 68.0
+
 [node name="Villager" type="CharacterBody2D" groups=["villager"]]
 texture_filter = 1
 script = ExtResource("1_8mb0b")
@@ -133,3 +137,23 @@ monitorable = false
 shape = SubResource("CircleShape2D_uoxq8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 35.0
+
+[node name="FightZone" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FightZone"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_e42kk")
+
+[node name="SinLabel" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(0.302317, 0.0190109, 0.274899, 1)
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="FightZone" to="." method="_on_fight_zone_body_entered"]

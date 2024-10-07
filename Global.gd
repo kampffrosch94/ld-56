@@ -19,3 +19,16 @@ static func get_color(ideo: Ideology):
 			return Color.BLUE
 		Ideology.Maw:
 			return Color.REBECCA_PURPLE 
+
+static func is_enemy(me: Ideology, other: Ideology) -> bool:
+	match me:
+		Ideology.Ankh:
+			return false
+		Ideology.Hammer:
+			return other == Ideology.Axe
+		Ideology.Axe:
+			return other == Ideology.Hammer
+		Ideology.Maw:
+			return other == Ideology.Ankh
+	return false
+ 
