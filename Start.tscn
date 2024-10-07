@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://3r3vpvs0wf7t"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_ku3r4"]
+[ext_resource type="Texture2D" uid="uid://cm8c85ri65wv" path="res://SpriteResource.tres" id="1_rmwaf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_087w6"]
+atlas = ExtResource("1_rmwaf")
+region = Rect2(32, 96, 32, 32)
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ku3r4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.5
+offset_top = -341.0
+offset_right = 381.5
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 55
+text = "Soul Fuel"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = SubResource("AtlasTexture_087w6")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "You are a cosmic entity traveling through space.
+On your way home you were attacked by pirates, but managed to shake them off.
+Problem is: you have run out of fuel.
+
+Luckily there are a couple tiny creatures living in your toy pocket dimension.
+If you corrupt their thoughts enough to have them commit sins, you can harvest their souls as fuel.
+
+You don't have much time until the pirates get here, 
+try to to get at least 50 souls in the next 200 years!"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start Harvesting!"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
