@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 class_name Villager
 
 var age: int = 0
@@ -47,7 +47,7 @@ func on_year_passed():
 	sprite.region_rect.position.x = 32 + (age / 20) * 32
 	sprite.region_rect.position.y = 128 + (sex * 32)
 	if age >= 20 and age <= 40 and sex == male and spouse == null:
-		for area in radar.get_overlapping_areas():
+		for area in radar.get_overlapping_bodies():
 			if area.is_in_group("villager") and area.sex == female and area.spouse == null and area.age >= 20 and area.age <= 40:
 				print("Found wife")
 				var wife := area as Villager
@@ -58,19 +58,23 @@ func on_year_passed():
 				state = State.Marriage
 				return
 
-var change_direction_timer = 2.0
+var change_direction_timer = 102.0
 var drift_direction = Vector2(0,0)
 
 func _physics_process(delta: float) -> void:
 	if state == State.Idle:
 		change_direction_timer += delta
-		if change_direction_timer > 2:
+		if change_direction_timer > 3:
 			drift_direction = Vector2(randf() - 0.5, randf() - 0.5)
 			change_direction_timer = 0
-		self.translate(drift_direction * delta * 30)
+		#self.translate(drift_direction * delta * 30)
+		self.velocity = drift_direction * 50
 	if state != State.Idle:
 		var dir = (nav.get_next_path_position() - global_position).normalized()
-		translate(dir * delta * 150 )
+		#translate(dir * delta * 150 )
+		self.velocity = dir *  150
+	move_and_slide()
+
 
 var house_scene = preload("res://house.tscn")
 

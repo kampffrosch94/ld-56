@@ -5,7 +5,7 @@ var mom: Villager = null
 var pop: Villager = null
 var villager_scene: PackedScene = load("res://Villager.tscn")
 
-var preg_chance = 0.2
+var preg_chance = 0.4
 
 func _ready() -> void:
 	Signals.year_passed.connect(on_year_passed)
@@ -19,3 +19,5 @@ func on_year_passed():
 			var child: Villager = villager_scene.instantiate()
 			add_sibling(child)
 			child.global_position = global_position
+	else:
+		queue_free()

@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cocurbnuwnyoc"]
+[gd_scene load_steps=13 format=4 uid="uid://cocurbnuwnyoc"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_nb8t8"]
 [ext_resource type="TileSet" uid="uid://c6qb2tvjwdavk" path="res://TileSet.tres" id="1_v0jqe"]
 [ext_resource type="PackedScene" uid="uid://df5mcjkprgits" path="res://Villager.tscn" id="2_d85w7"]
 [ext_resource type="Texture2D" uid="uid://cm8c85ri65wv" path="res://SpriteResource.tres" id="2_tl5so"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="3_pyd0p"]
 [ext_resource type="Script" path="res://IdeologyButton.gd" id="5_l2ia8"]
 [ext_resource type="Script" path="res://debug_button.gd" id="5_ny2jp"]
 
@@ -28,6 +30,7 @@ atlas = ExtResource("2_tl5so")
 region = Rect2(96, 32, 32, 32)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_nb8t8")
 metadata/_edit_lock_ = true
 
 [node name="Villager_A" parent="." instance=ExtResource("2_d85w7")]
@@ -48,6 +51,7 @@ position = Vector2(367, 211)
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+script = ExtResource("3_pyd0p")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

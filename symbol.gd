@@ -33,7 +33,7 @@ func _draw() -> void:
 
 
 func on_year_passed():
-	for area in get_overlapping_areas():
+	for area in get_overlapping_bodies():
 		if area.is_in_group("villager"):
 			var villager := area as Villager
 			var material: ShaderMaterial = villager.sprite.material
