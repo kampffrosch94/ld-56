@@ -18,3 +18,8 @@ var year = 0
 func year_passed():
 	year += 1
 	$CanvasLayer/YearLabel.text = "Year " + str(year)
+	if year >= 200:
+		if Signals.souls_collected >= 50:
+			get_tree().change_scene_to_file("res://Victory.tscn")
+		else:
+			get_tree().change_scene_to_file("res://Defeat.tscn")
